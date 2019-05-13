@@ -40,7 +40,7 @@ class LoginController extends Controller
     public function login(){
         return view("User.login");
     }
-    public function loginDO(Request $request){
+    public function loginDo(Request $request){
         $name=$request->post("name");
         $pwd=$request->post("pwd");
         $email=$request->post("email");
@@ -59,7 +59,7 @@ class LoginController extends Controller
             ];
             $json_str = json_encode($data);
             $k = openssl_pkey_get_private('file://' . storage_path('app/keys/private.pem'));
-
+//            var_dump($k);
             openssl_sign($json_str,$enc_data,$k);
             //  echo $enc_data;
             $b64=base64_encode($enc_data);
