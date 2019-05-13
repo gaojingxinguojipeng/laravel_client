@@ -65,7 +65,7 @@ class LoginController extends Controller
             $b64=base64_encode($enc_data);
 
             echo $b64;
-            $api_url = "http://vm.two.api.com/pub?sign=".urlencode($b64);
+            $api_url = "http://lumen.gaojingxin.top/pub?sign=".urlencode($b64);
 
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $api_url);
