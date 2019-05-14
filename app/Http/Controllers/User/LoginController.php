@@ -89,7 +89,7 @@ class LoginController extends Controller
 
 
     public function register(Request $request){
-        $name=$request-input("name");
+        $name=$request->input("name");
         $pwd=$request->input("pwd");
         $data=[
             "name"=>$name,
