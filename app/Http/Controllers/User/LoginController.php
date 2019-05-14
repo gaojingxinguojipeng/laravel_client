@@ -86,5 +86,28 @@ class LoginController extends Controller
 
 
 
-    
+
+
+    public function register(Request $request){
+        $name=$request-input("name");
+        $pwd=$request->input("pwd");
+        $data=[
+            "name"=>$name,
+            "pwd"=>$pwd
+        ];
+        $arr=DB::table("user2")->insert($data);
+        if($arr){
+            $response=[
+                "code"=>1,
+                "msg"=>"注册成功",
+            ];
+            return $response;
+        }else{
+            $response=[
+                "code"=>2,
+                "msg"=>"注册失败",
+            ];
+            return $response;
+        }
+    }
 }

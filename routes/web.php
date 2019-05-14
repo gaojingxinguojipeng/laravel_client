@@ -27,6 +27,9 @@ Route::any("loginDo","User\LoginController@loginDo");
 Route::any("reg","User\LoginController@reg");
 Route::any("regDo","User\LoginController@regDo");
 Route::any("kuayu","User\LoginController@kuayu");
+Route::any("register","User\LoginController@register");
+
+
 
 
 
