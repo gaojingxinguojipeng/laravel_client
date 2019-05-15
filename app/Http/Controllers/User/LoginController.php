@@ -65,7 +65,7 @@ class LoginController extends Controller
             $b64=base64_encode($enc_data);
 
             echo $b64;
-            $api_url = "http://lumen.gaojingxin.top/pub?sign=".urlencode($b64);
+            $api_url = "http://vm.two.api.com/pub?sign=".urlencode($b64);
 
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $api_url);
@@ -83,6 +83,35 @@ class LoginController extends Controller
             curl_close($ch);
         }
     }
+
+
+
+
+
+//    分布式注册
+
+public function openreg(){
+    $str=file_get_contents("php://input");
+    echo 'json:'.$str;echo'</br>';echo'<hr>';
+    $response=[
+        "code"=>1,
+        "msg"=>$str,
+    ];
+    return $response;
+    $arr=DB::table("user2")->insert($data);
+    if($arr){
+        $response=[
+            "code"=>1,
+            "msg"=>"注册成功",
+        ];
+        return $response;
+    }else{
+        $response=[
+            "code"=>2,
+            "msg"=>"注册失败",
+        ];
+        return $response;
+    }}
 
 
 
