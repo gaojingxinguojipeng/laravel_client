@@ -92,12 +92,13 @@ class LoginController extends Controller
 
 public function openreg(){
     $str=file_get_contents("php://input");
-    echo 'json:'.$str;echo'</br>';echo'<hr>';
-    $response=[
-        "code"=>1,
-        "msg"=>$str,
-    ];
-    return $response;
+//    echo 'json:'.$str;echo'</br>';echo'<hr>';
+//    $response=[
+//        "code"=>1,
+//        "msg"=>$str,
+//    ];
+//    return $response;
+    $data=json_decode($str);
     $arr=DB::table("user2")->insert($data);
     if($arr){
         $response=[
