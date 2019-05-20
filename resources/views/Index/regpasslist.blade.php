@@ -24,7 +24,7 @@
         <td id="name">{{$v->name}}</td>
         <td id="shui">{{$v->shui}}</td>
         <td>{{$v->dui}}</td>
-        <td><img src="http://http://laravel.lzy1109.com/{{$v->img}}" alt="" height="80px" width="60px"></td>
+        <td><img src="http://laravel.lzy1109.com/{{$v->img}}" alt="" height="80px" width="60px"></td>
         <td>{{$v->APPID}}</td>
         <td>{{$v->key}}</td>
         @if($v->status==1)
