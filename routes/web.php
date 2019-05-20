@@ -31,6 +31,25 @@ Route::post("openreg","User\LoginController@openreg");
 Route::post("openlogin","User\LoginController@openlogin");
 
 
+Route::any("regpass","Index\IndexController@regpass");
+Route::any("uploadImg","Index\IndexController@uploadImg");
+Route::any("regpassDo","Index\IndexController@regpassDo");
+Route::any("accessToken","Index\IndexController@accessToken");
+Route::any("loginpass","Index\IndexController@loginpass");
+Route::any("loginpassDo","Index\IndexController@loginpassDo");
+Route::any("regpasslist","Index\IndexController@regpasslist");
+Route::any("regstatus","Index\IndexController@regstatus");
+Route::any("uaShow","Index\IndexController@uaShow");
+Route::any("ipShow","Index\IndexController@ipShow")->middleware("fangshua");
+
+
+
+
+
+
+
+
+
 
 
 
