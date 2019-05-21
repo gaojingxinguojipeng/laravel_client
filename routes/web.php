@@ -40,6 +40,7 @@ Route::any("loginpassDo","Index\IndexController@loginpassDo");//登录执行
 Route::any("regpasslist","Index\IndexController@regpasslist");//注册列表
 Route::any("regstatus","Index\IndexController@regstatus");//审核状态
 Route::any("uaShow","Index\IndexController@uaShow");//获取ua
+Route::any("userinfo","Index\IndexController@userinfo");//获取个人信息
 Route::any("ipShow","Index\IndexController@ipShow")->middleware("fangshua");//获取ip
 
 

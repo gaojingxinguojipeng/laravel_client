@@ -74,11 +74,9 @@ class IndexController extends Controller
         }
     }
     public function regstatus(Request $request){
-        $name=$request->input("name");
-        $shui=$request->input("shui");
+        $id=$request->input("id");
         $where=[
-            "name"=>$name,
-            "shui"=>$shui,
+            "id"=>$id,
         ];
         $res=DB::table("regpass")->where($where)->update(['status'=>2]);
         if($res){
@@ -172,6 +170,32 @@ class IndexController extends Controller
                 ];
                 return $response;
             }
+        }else{
+            $response=[
+                "code" => 2,
+                "msg" => "参数错误",
+            ];
+            return json_encode($response,JSON_UNESCAPED_UNICODE);
+        }
+    }
+    public function userinfo(){
+        $accessToken=$_GET["accessToken"];
+        $key="loginpass_token1";
+        $accesstoken=Redis::get($key);
+        if($accessToken==$accesstoken){
+            $id=$_GET['id'];
+            $where=[
+                "id"=>$id,
+            ];
+            $res=DB::table("regpass")->where($where)->first();
+            if($res){
+                $response=[
+                    "code"=>1,
+                    "msg"=>$res
+                ];
+                return $response;
+            }
+
         }else{
             $response=[
                 "code" => 2,

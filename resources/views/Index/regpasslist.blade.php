@@ -20,11 +20,12 @@
         <td>是否通过</td>
     </tr>
     @foreach($data as $k=>$v)
-    <tr>
-        <td id="name">{{$v->name}}</td>
-        <td id="shui">{{$v->shui}}</td>
+    <tr id="{{$v->id}}">
+
+        <td class="name">{{$v->name}}</td>
+        <td class="shui">{{$v->shui}}</td>
         <td>{{$v->dui}}</td>
-        <td><img src="http://laravel.lzy1109.com/{{$v->img}}" alt="" height="80px" width="60px"></td>
+        <td></td>
         <td>{{$v->APPID}}</td>
         <td>{{$v->key}}</td>
         @if($v->status==1)
@@ -32,7 +33,7 @@
         @elseif($v->status==2)
         <td>以通过</td>
         @endif
-        <td><input type="button" id="button" value="通过" ></td>
+        <td><input type="button" class="button" value="通过" ></td>
     </tr>
      @endforeach
 </table>
@@ -41,12 +42,11 @@
 <script src="js/jquery.min.js"></script>
 <script>
     $(document).ready(function() {
-        $("#button").click(function () {
+        $(".button").click(function () {
+            var kk = $(this);
+            var id=kk.parents('tr').attr('id');
             var data={};
-            var name=$("#name").text();
-            var shui=$("#shui").text();
-            data.name=name;
-            data.shui=shui;
+            data.id=id;
             var url="http://laravel.lzy1109.com/regstatus";
             $.ajax({
                 type: "post",
