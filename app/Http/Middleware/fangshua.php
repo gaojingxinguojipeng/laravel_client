@@ -38,7 +38,7 @@ class fangshua
             ];
 
 
-            # 10分钟
+            # 1分钟
             Redis::expire($redis_key, 60);
             echo json_encode($response,JSON_UNESCAPED_UNICODE);die;
         }

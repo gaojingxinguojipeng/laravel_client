@@ -31,16 +31,16 @@ Route::post("openreg","User\LoginController@openreg");
 Route::post("openlogin","User\LoginController@openlogin");
 
 
-Route::any("regpass","Index\IndexController@regpass");
-Route::any("uploadImg","Index\IndexController@uploadImg");
-Route::any("regpassDo","Index\IndexController@regpassDo");
-Route::any("accessToken","Index\IndexController@accessToken");
-Route::any("loginpass","Index\IndexController@loginpass");
-Route::any("loginpassDo","Index\IndexController@loginpassDo");
-Route::any("regpasslist","Index\IndexController@regpasslist");
-Route::any("regstatus","Index\IndexController@regstatus");
-Route::any("uaShow","Index\IndexController@uaShow");
-Route::any("ipShow","Index\IndexController@ipShow")->middleware("fangshua");
+Route::any("regpass","Index\IndexController@regpass");//注册
+Route::any("uploadImg","Index\IndexController@uploadImg");//上传图片
+Route::any("regpassDo","Index\IndexController@regpassDo");//注册执行
+Route::any("accessToken","Index\IndexController@accessToken");//生成accessToken
+Route::any("loginpass","Index\IndexController@loginpass");//登录
+Route::any("loginpassDo","Index\IndexController@loginpassDo");//登录执行
+Route::any("regpasslist","Index\IndexController@regpasslist");//注册列表
+Route::any("regstatus","Index\IndexController@regstatus");//审核状态
+Route::any("uaShow","Index\IndexController@uaShow");//获取ua
+Route::any("ipShow","Index\IndexController@ipShow")->middleware("fangshua");//获取ip
 
 
 
