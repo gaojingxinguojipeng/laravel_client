@@ -39,6 +39,7 @@ class IndexController extends Controller
 
 
     }
+//    注册列表
     public function regpasslist(){
         $data=DB::table("regpass")->get();
         return view("Index.regpasslist",["data"=>$data]);
@@ -46,6 +47,7 @@ class IndexController extends Controller
     public function loginpass(){
         return view("Index.login");
     }
+//    登录执行
     public function loginpassDo(Request $request){
         $name=$request->input("name");
         $shui=$request->input("shui");
@@ -73,6 +75,7 @@ class IndexController extends Controller
             }
         }
     }
+    //修改注册状态 审核
     public function regstatus(Request $request){
         $id=$request->input("id");
         $where=[
@@ -88,6 +91,7 @@ class IndexController extends Controller
         }
 
     }
+    //上传图片接口
     public function uploadImg(Request $request){             //图片上传
         if($request->isMethod('POST')){
             $fileCharater=$request->file('goods_img');               // 使用request 创建文件上传对象
@@ -104,7 +108,7 @@ class IndexController extends Controller
         }
         return json_encode($file_path);
     }
-
+//获取accesstoken接口
     public function accessToken(){
         $APPID=$_GET['APPID'];
         $key=$_GET["key"];
@@ -136,6 +140,7 @@ class IndexController extends Controller
         }
 
     }
+    //获取ua接口
     public function uaShow(){
         $accessToken=$_GET["accessToken"];
         $key="loginpass_token1";
@@ -157,6 +162,7 @@ class IndexController extends Controller
             return json_encode($response,JSON_UNESCAPED_UNICODE);
         }
     }
+    //ip接口
     public function ipShow(){
         $accessToken=$_GET["accessToken"];
         $key="loginpass_token1";
@@ -178,6 +184,7 @@ class IndexController extends Controller
             return json_encode($response,JSON_UNESCAPED_UNICODE);
         }
     }
+    //显示个人信息接口
     public function userinfo(){
         $accessToken=$_GET["accessToken"];
         $key="loginpass_token1";
@@ -203,5 +210,27 @@ class IndexController extends Controller
             ];
             return json_encode($response,JSON_UNESCAPED_UNICODE);
         }
+    }
+    public function qiandao(){
+        $data=date("Ymd");
+        $key="qiandao".$data;
+        $qian=Redis::bitcount($key);
+
+
+        return view("Index.qiandao",['qian'=>$qian]);
+    }
+    //签到
+    public function qiandaoDo(){
+        $data=date("Ymd");
+        $key="qiandao".$data;
+        $qian=Redis::setbit($key,7,1);
+        if($qian){
+            $response=[
+                "code"=>1,
+                "msg"=>"签到成功"
+            ];
+            return $response;
+        }
+
     }
 }

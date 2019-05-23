@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('blade', function () {
+    return view('child');
+});
 Route::any("encode","User\UserController@encode");
 Route::any("decode","User\UserController@decode");
 Route::any("eclist","User\UserController@eclist");
@@ -43,6 +46,8 @@ Route::any("uaShow","Index\IndexController@uaShow");//获取ua
 Route::any("userinfo","Index\IndexController@userinfo");//获取个人信息
 Route::any("ipShow","Index\IndexController@ipShow")->middleware("fangshua");//获取ip
 
+Route::any("qiandao","Index\IndexController@qiandao");//签到
+Route::any("qiandaoDo","Index\IndexController@qiandaoDo");//签到
 
 
 
@@ -64,3 +69,11 @@ Route::any("ipShow","Index\IndexController@ipShow")->middleware("fangshua");//�
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
